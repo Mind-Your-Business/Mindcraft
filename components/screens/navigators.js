@@ -12,6 +12,7 @@ import UsersList from './usersList'
 import Login from './loginForm'
 import Signup from './signUpForm'
 import Icon from "react-native-vector-icons/Ionicons"
+import AuthLoading from './authLoading'
 
 export const authNavigator = createStackNavigator({
     Login: {screen: Login},
@@ -63,15 +64,17 @@ export const BottomTabNavigator = createBottomTabNavigator({
       activeTintColor:  '#636b61',
       inactiveTintColor: '#636b61',
     },
-  })})
+  })}
+  )
  const MainNavigator = createAppContainer(BottomTabNavigator)
   export const SwitchNavigator = createSwitchNavigator(
     {
+      AuthLoading: AuthLoading,
       Login: authNavigator,
       App: BottomTabNavigator
     },
     {
-      initialRouteName: 'Login'
+      initialRouteName: 'AuthLoading'
     }
   );
 

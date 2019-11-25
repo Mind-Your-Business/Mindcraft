@@ -49,7 +49,6 @@ export const auth = (email, password) => async dispatch => {
       })
     })
     const resData = await res.json();
-    console.log('resData',resData);
     dispatch(getUser(resData));
     }catch (authError) {
     return dispatch(getUser({error: authError}))

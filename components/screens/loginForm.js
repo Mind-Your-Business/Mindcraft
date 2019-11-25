@@ -1,12 +1,11 @@
 import React, { Component } from "react";
-import { View, Text, TextInput, ImageBackground, KeyboardAvoidingView, ScrollView, TouchableOpacity, Button } from "react-native";
+import { View, Text, TextInput, ImageBackground, KeyboardAvoidingView, ScrollView, TouchableOpacity, Button, AsyncStorage } from "react-native";
 import styles from '../../assets/styles/loginStyles'
 import RoundedButton from "../buttons/RoundedButton";
 import authReducer from '../redux/actions/authActions'
 import {auth} from '../redux/actions/authActions'
 import {connect} from 'react-redux'
 import {loadUser, saveUser} from '../storage/userStorage'
-
 
 class Login extends Component {
     constructor(){
@@ -21,20 +20,18 @@ class Login extends Component {
 
     componentDidMount= async () => {
       let user = await loadUser()
-      console.log("USER", user)
+      console.log("USER", user.id)
     }
 
     async logIn() {
-      console.log('Pressed login')
       await this.props.userAuth(this.state.email, this.state.password)
-      console.log(this.props)
         if (this.props.user.email=== this.state.email) {
-          saveUser(this.state)
+          saveUser(this.props.user)
           this.props.navigation.navigate('Home')
         } else {
             this.toggleMessage()
         }
-      } 
+      }
 
      toggleMessage() {
        this.setState({
@@ -65,10 +62,10 @@ class Login extends Component {
                     placeholderTextColor = 'white'
                     secureTextEntry
                 />
-                <RoundedButton text="Login" color = "white" backgroundColor= '#FFA611' 
+                <RoundedButton text="Login" color = "white" backgroundColor= '#FFA611'
                 onPress={this.logIn}/>
-               
-                <RoundedButton text="Create Account" color = "white" backgroundColor= '#FFA611' 
+
+                <RoundedButton text="Create Account" color = "white" backgroundColor= '#FFA611'
                 onPress={()=>this.props.navigation.navigate('Signup')}/>
 
           </ScrollView>
@@ -88,5 +85,5 @@ class Login extends Component {
       })
 
       export default connect(mapState,mapDispatch)(Login)
-      
+
 
