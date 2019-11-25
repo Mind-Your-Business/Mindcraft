@@ -1,6 +1,9 @@
 import {GET_USER, CREATE_USER, REMOVE_USER} from '../../redux/actions/types'
+const initialState = {
+  user: {}
+}
 
-const authReducer = (state = defaultUser, action) =>{
+const authReducer = (state = initialState, action) =>{
     switch (action.type) {
       case GET_USER:
         return action.user
@@ -13,4 +16,3 @@ const authReducer = (state = defaultUser, action) =>{
     }
   }
   export default authReducer
-  
