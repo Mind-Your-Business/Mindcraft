@@ -26,3 +26,6 @@ export const GET_ALL_ENTRIES = 'GET_ALL_ENTRIES'
 export const GET_ONE_ENTRY = 'GET_ONE_ENTRY'
 export const CREATE_ENTRY = 'CREATE_ENTRY'
 export const DELETE_ENTRY = 'DELETE_ENTRY'
+
+export const GET_ONE_LEVEL = "GET_ONE_LEVEL"
+export const GET_ALL_LEVELS = "GET_ALL_LEVELS"

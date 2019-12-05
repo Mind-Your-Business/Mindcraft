@@ -10,6 +10,8 @@ import styles from '../../assets/styles/userProfileStyle'
 import { connect } from 'react-redux'
 import { loadUser, saveUser } from '../storage/userStorage'
 import { gotOneLevel, gotAllLevels } from '../../redux/actions/levelActions'
+import axios from 'axios'
+
 class LevelPage extends React.Component {
   static navigationOptions = {
     title: 'Profile',
@@ -44,7 +46,6 @@ class LevelPage extends React.Component {
     )
     levels = await levels.json()
     this.setState({ levels: levels })
-    console.log(this.state)
     this.updateLevel()
   }
 
@@ -73,6 +74,7 @@ class LevelPage extends React.Component {
       console.log('HEY, YOU WIN!! ')
       let nextLevel = this.checkLevel()
       this.setState({ userLevel: nextLevel })
+      // await axios.put(`https://mindcraft-api.herokuapp.com/api/users/${this.state.id}`, {userLevel: this.state.userLevel})
       await saveUser(this.state)
       let userInfo = await loadUser()
       this.setState(userInfo)

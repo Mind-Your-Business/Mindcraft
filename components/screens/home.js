@@ -45,7 +45,7 @@ class HomePage extends React.Component{
                       </View>
                       <View style={styles.journals}>
                       <TouchableOpacity onPress={()=>this.props.navigation.navigate('Profile')}>
-                          <Text style={styles.text}>User Profile</Text>
+                          <Text style={styles.text}>User Level</Text>
                       </TouchableOpacity>
                       </View>
                       <View style={styles.journals}>

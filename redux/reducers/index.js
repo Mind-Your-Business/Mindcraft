@@ -4,6 +4,7 @@ import singleMeditationReducer from './singleMeditationReducer'
 import {quizReducer} from './quizzesReducer'
 import authReducer from './authReducer'
 import {journalsReducer,oneJournalReducer} from './journalsReducer'
+import levelReducer from './levelReducer'
 
 const reducer = combineReducers({
     usersReducer,
@@ -11,6 +12,8 @@ const reducer = combineReducers({
     quizReducer,
     authReducer,
     journalsReducer,
-    oneJournalReducer})
+    oneJournalReducer,
+    levelReducer
+})
 
 export default reducer
